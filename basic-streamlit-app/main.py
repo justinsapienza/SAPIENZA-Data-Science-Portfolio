@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+# streamlit run GitHub/SAPIENZA-Data-Science-Portfolio/basic-streamlit-app/main.py
+
 st.title("Palmer's Penguins")
 
 st.write("The Streamlit App creates widgets to visualize the Palmer's Penguins data in an interactive display.")
