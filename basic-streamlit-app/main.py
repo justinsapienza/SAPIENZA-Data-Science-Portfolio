@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-# streamlit run GitHub/SAPIENZA-Data-Science-Portfolio/basic-streamlit-app/main.py
+# To run the app type: "streamlit run GitHub/SAPIENZA-Data-Science-Portfolio/basic-streamlit-app/main.py"
 
 st.title("Palmer's Penguins")
 
