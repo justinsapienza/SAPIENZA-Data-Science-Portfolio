@@ -21,6 +21,13 @@ filtered_df = penguins[penguins["species"] == species]
 # Display the filtered results
 st.dataframe(filtered_df)
 
+# Using a selectbox to allow users to filter data by island
+island = st.selectbox("Select an Island:", penguins["island"].unique())
+# Filtering the DataFrame based on user selection
+filtered_df2 = penguins[penguins["island"] == island]
+# Display the filtered results
+st.dataframe(filtered_df2)
+
 # Using a slider to allow users to filter data by body mass range
 body_mass = st.slider("Choose a body mass range:",
                    min_value = penguins["body_mass_g"].min(),
