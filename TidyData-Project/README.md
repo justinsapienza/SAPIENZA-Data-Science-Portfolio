@@ -47,5 +47,6 @@ Links for further data tidying help!
 
 Cleaned Data Visualizations
 ---------------------------
+![Heatmap](assets/Heatmap.png)
 
 
