@@ -9,7 +9,7 @@ ___
 
 ## Projects
 
-**[Streamlit App](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/basic-streamlit-app)**
+### **[Streamlit App](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/basic-streamlit-app)**
 
 **Description:** My basic Streamlit app project involves creating an interactive web application using Python and the Streamlit library. It includes features like displaying data, visualizing it through charts and graphs, and incorporating user inputs such as sliders to make the app dynamic. This project showcases my ability to turn data scripts into shareable, user-friendly applications, highlighting my skills in coding and data presentation.
 
@@ -19,11 +19,13 @@ ___
 
 **Preview:** Utilizing the Palmer's Penguins Dataset, I created an interactive table to visualzie the data.
 
-Here is an example of a table, giving the user the option to choose a specific species:
+Here is an example of a table giving the user the option to choose a specific species to look at:
 
 ![Table](assets/streamlit_table.png)
 
-**[Tidy Data](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/TidyData-Project)**
+***
+
+## **[Tidy Data](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/TidyData-Project)**
 
 **Desciption:** The tidy data project focuses on organizing datasets to make them easier to analyze and interpret through visualizations. It emphasizes reshaping and transforming data so that each variable is in its own column, each observation forms its own row, and each type of observational unit forms its own table. This approach simplifies data cleaning to enhance analytical tools that allow for more efficient exploration and visualization of data.
 
