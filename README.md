@@ -28,3 +28,5 @@ ___
 **Preview:** Utilizing the 2008 Olympic Medalists Dataset, I cleaned the data and visualed the cleaned data.
 
 Here is a heatmap of the data:
+
+![Heatmap](assets/Heatmap.png)
