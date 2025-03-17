@@ -36,17 +36,19 @@ Step-by-step instructions on how to run the notebook:
 2. Import the pyplot functions in the matplotlib package and assign it as plt
 3. Import the seaborn visualization library and assign it as sns
 4. Load the CSV file of the dataset using the relative path for the CSV
-5. Use the function print(df.head()) to preview the dataset.
+5. Refer to the [Data Cleaning Codebook](Data_Cleaning_Visualization.ipynb) for the entire notebook.
 
 References
 ----------
 Links for further data tidying help!
 
-- [_Tiny Data_ by Hadley Wickman](https://vita.had.co.nz/papers/tidy-data.pdf)
+- [_Tidy Data_ by Hadley Wickman](https://vita.had.co.nz/papers/tidy-data.pdf)
 - [Pandas Cheat Sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
 
 Cleaned Data Visualizations
 ---------------------------
+![Medals by Event](assets/medals_event.png)
+![Medals by Event and Gender](assets/medals_gender_event.png)
 ![Heatmap](assets/Heatmap.png)
 
 
