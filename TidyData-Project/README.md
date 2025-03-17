@@ -49,6 +49,5 @@ Cleaned Data Visualizations
 ---------------------------
 ![Medals by Event](assets/medals_event.png)
 ![Medals by Event and Gender](assets/medals_gender_event.png)
-![Heatmap](assets/Heatmap.png)
 
 
