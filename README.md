@@ -29,4 +29,4 @@ ___
 
 Here is a heatmap of the data:
 
-![Heatmap](Sassets/Heatmap.png)
+![Heatmap](assets/Heatmap.png)
