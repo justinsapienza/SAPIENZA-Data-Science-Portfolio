@@ -1,14 +1,14 @@
 import streamlit as st
 import pandas as pd
 
-# To run the app type: "streamlit run GitHub/SAPIENZA-Data-Science-Portfolio/basic-streamlit-app/main.py"
+# To run the app type: "streamlit run SAPIENZA-Data-Science-Portfolio/basic-streamlit-app/main.py"
 
 st.title("Palmer's Penguins")
 
 st.write("The Streamlit App creates widgets to visualize the Palmer's Penguins data in an interactive display.")
 
 # Importing the dataset
-penguins = pd.read_csv("GitHub/SAPIENZA-Data-Science-Portfolio/basic-streamlit-app/data/penguins.csv")
+penguins = pd.read_csv("SAPIENZA-Data-Science-Portfolio/basic-streamlit-app/data/penguins.csv")
 
 # Displaying the table in Streamlit
 st.write("Here's an interactive table.")

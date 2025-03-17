@@ -17,6 +17,12 @@ ___
 
 **Skills:** Python, Streamlit, Pandas | Data Visualization
 
+**Preview:** Utilizing the Palmer's Penguins Dataset, I created an interactive table to visualzie the data.
+
+Here is an example of a table, giving the user the option to choose a specific species:
+
+![Table](assets/streamlit_table.png)
+
 **[Tidy Data](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/TidyData-Project)**
 
 **Desciption:** The tidy data project focuses on organizing datasets to make them easier to analyze and interpret through visualizations. It emphasizes reshaping and transforming data so that each variable is in its own column, each observation forms its own row, and each type of observational unit forms its own table. This approach simplifies data cleaning to enhance analytical tools that allow for more efficient exploration and visualization of data.
