@@ -25,7 +25,7 @@ ___
 
 **Skills:** Python, Matplot, Seaborn, Pandas | Data Cleaning, Data Visualization, Data Analysis
 
-**Preview:** Utilizing the 2008 Olympic Medalists Dataset, I cleaned the data and visualed the cleaned data.
+**Preview:** Utilizing the 2008 Olympic Medalists Dataset, I cleaned the data and presented the cleaned data in a heatmap.
 
 Here is a heatmap of the data:
 
