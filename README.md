@@ -25,9 +25,9 @@ Here is an example of a table giving the user the option to choose a specific sp
 
 ***
 
-## **[Tidy Data](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/TidyData-Project)**
+### **[Tidy Data](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/TidyData-Project)**
 
-**Desciption:** The tidy data project focuses on organizing datasets to make them easier to analyze and interpret through visualizations. It emphasizes reshaping and transforming data so that each variable is in its own column, each observation forms its own row, and each type of observational unit forms its own table. This approach simplifies data cleaning to enhance analytical tools that allow for more efficient exploration and visualization of data.
+**Description:** The tidy data project focuses on organizing datasets to make them easier to analyze and interpret through visualizations. It emphasizes reshaping and transforming data so that each variable is in its own column, each observation forms its own row, and each type of observational unit forms its own table. This approach simplifies data cleaning to enhance analytical tools that allow for more efficient exploration and visualization of data.
 
 **Experience:** The tidy data project complements my data science portfolio by showcasing my ability to clean, structure, and organize datasets effectively, a critical skill for any data-driven role. The project highlights my understanding of data tidying principles and ability to prepare data for insightful analysis and visualization. Additionally, it demonstrates my proficiency with tools like Matplotlib and Seaborn, reinforcing my skills in translating messy datasets into meaningful insights.
 
@@ -38,3 +38,15 @@ Here is an example of a table giving the user the option to choose a specific sp
 Here is a heatmap of the data:
 
 ![Heatmap](assets/Heatmap.png)
+
+***
+
+### **[Machine Learning App](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/MLStreamlitApp)**
+
+**Description:** The machine learning app project is an interactive platform designed to guide users through the conecpts and applications of two foundational machine learning algorithms: **Linear Regression** and **Logistic Regression**. The app provides an educational and hands-on experience by allowing users to upload their own datasets or choose from built-in real-world datasets. The project's goals is to bridge the gap between theory and application by enabling users to explore the distinctions between linear and logistic regression, understand how these models adapt to real-world problems, and experiment through data-driven insights and results.
+
+**Experience:** This app serves as an important addition to my portfolio, highlighting my expertise in interactive Python development, as well as implementation and knowledge of machine learning models. By building an interactive Streamlit app, I demonstrate my ability to create user-friendly interfaces with feaures like dataset uploads, dropdowns, and sliders to meet the needs of the user. Additionally, the compairson of linear and logistic regression exhibits proficiency in machine learning concepts, particularly in regression techniques from data preprocessing to evaluating performance metrics. By presenting this app in my portfoliio, I am demonstrating my ability to build interactive, practical, and impactful machine learning applications while reinforming my Python development skills as a data problem-solver.
+
+**Skills:** Python, Streamlit, Pandas, Scikit-learn, Matplot | Data Visualization, Data Problem-Solving, Machine Learning
+
+**Preview:**
