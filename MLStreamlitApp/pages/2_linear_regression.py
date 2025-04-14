@@ -46,7 +46,7 @@ if data is not None:
     # Feature and Target Selection
     features = st.multiselect("Select Features (Independent Variables)", options=data.columns)
     target = st.selectbox("Select Target Variable (Dependent Variable)", options=data.columns)
-
+    
     if features and target:
         X = data[features]
         y = data[target]
@@ -91,5 +91,3 @@ if data is not None:
         st.info("Please select at least one feature and a target variable.")
 else:
     st.info("Please select a sample dataset or upload your own dataset to proceed.")
-
-
