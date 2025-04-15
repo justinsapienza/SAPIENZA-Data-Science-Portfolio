@@ -77,7 +77,17 @@ if data is not None:  # Check if a dataset is available
             y = pd.factorize(y)[0]  # Encode target variable to numeric
         elif y.dtype in ["int64", "float64"]:  # Check if the target is continuous
             st.write("Target variable is continuous. Binning the values into discrete classes...")  # Notify user
-            y = pd.qcut(y, q=2, labels=[0, 1], duplicates="drop")  # Bin continuous target into two categories
+    
+            # Check for duplicate or insufficient unique values in the target variable
+            if y.nunique() < 2:
+                st.error("The target variable has fewer than 2 unique values. Binning cannot be performed.")
+            else:
+                try:
+                    # Use qcut with duplicates handled
+                    y = pd.qcut(y, q=2, labels=[0, 1], duplicates="drop")
+                except ValueError as e:
+                    st.error(f"Error during binning: {e}")
+                    st.write("Consider using manual binning or ensuring sufficient unique values in the target variable.")
 
         # Train-Test Split
         test_size = st.slider("Test Size (Percentage)", 10, 50, 20) / 100  # Slider to select test set percentage
