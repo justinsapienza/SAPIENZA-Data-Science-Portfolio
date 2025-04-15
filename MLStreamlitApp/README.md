@@ -80,9 +80,9 @@ References
 ----------
 Links for further regression information!
 
-- [Linear Regression](https://vita.had.co.nz/papers/tidy-data.pdf](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.fit))
+- [scikit-learn Linear Regression](https://vita.had.co.nz/papers/tidy-data.pdf](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.fit))
 - [RMSE vs. R²](https://www.statology.org/rmse-vs-r-squared/)
-- [Logistic Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+- [scikit-learn Logistic Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
 
 Linear Regression Sample Graph
 -------
