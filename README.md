@@ -47,6 +47,10 @@ Here is a heatmap of the data:
 
 **Experience:** This app serves as an important addition to my portfolio, highlighting my expertise in interactive Python development, as well as implementation and knowledge of machine learning models. By building an interactive Streamlit app, I demonstrate my ability to create user-friendly interfaces with feaures like dataset uploads, dropdowns, and sliders to meet the needs of the user. Additionally, the compairson of linear and logistic regression exhibits proficiency in machine learning concepts, particularly in regression techniques from data preprocessing to evaluating performance metrics. By presenting this app in my portfoliio, I am demonstrating my ability to build interactive, practical, and impactful machine learning applications while reinforming my Python development skills as a data problem-solver.
 
-**Skills:** Python, Streamlit, Pandas, Scikit-learn, Matplot | Data Visualization, Data Problem-Solving, Machine Learning
+**Skills:** Python, Streamlit, Pandas, Numpy, Scikit-learn, Matplot | Data Visualization, Data Problem-Solving, Machine Learning
 
-**Preview:**
+**Preview:** Utilizing the information on linear and logistic regression, the app allows users to experiment with different datasets.
+
+Here is an ROC curve of the Titanic Dataset with "Sex" and "Fare" as the features and "Embarked" as the Target Variable:
+
+![ROC Curve](assets/sample_ROC_curve.png)
