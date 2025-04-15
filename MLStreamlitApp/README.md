@@ -47,16 +47,39 @@ Target: Always categorical
 Instructions
 ------------
 Step-by-step instructions on how to run the app locally and a link to the deployed version:
-1. Import the pandas library in Python and assign it as pd
-2. Import the pyplot functions in the matplotlib package and assign it as plt
-3. Import the seaborn visualization library and assign it as sns
-4. Load the CSV file of the dataset using the relative path for the CSV
-5. Refer to the [Data Cleaning Codebook](Data_Cleaning_Visualization.ipynb) for the entire notebook.
+1. Import the streamlit library in Python and assign it as st
+2. Copy the relative path of the file
+3. Open the terminal
+4. Type "streamlit run" and paste the relative path
+5. Hit enter
+6. The app will open as a local host in your browser
+7. Here is a link to the [deployed version](https://sapienza-data-science-portfolio-iv2mfzqqgu9duwbxztczgj.streamlit.app/) of the app
+
+Libraries
+------------
+- import **streamlit** as st
+  - Streamlit for interactive web application
+- import **numpy** as np
+  - NumPy for numerical computations
+- import **pandas** as pd
+  - Pandas for data manipulation and analysis
+- import **matplotlib.pyplot** as plt
+  - Matplotlib for plotting graphs
+- from **sklearn.linear_model** import LinearRegression
+  - Linear Regression model
+- from **sklearn.model_selection** import train_test_split
+  - Split data into training and testing sets
+- from **sklearn.metrics** import mean_squared_error, r2_score
+  - Metrics for evaluating model performance
+- from **sklearn.linear_model** import LogisticRegression
+  - Logistic Regression model
+- from **sklearn.metrics** import accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve
+  - Metrics for model evaluation
 
 References
 ----------
 Links for further regression information!
 
-- [What is Machine Learning?](file:///Users/justinsapienza/Downloads/Grokking%20ML_Ch%201%20&%202a.pdf)
 - [Linear Regression](https://vita.had.co.nz/papers/tidy-data.pdf](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.fit))
-- [Pandas Cheat Sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
+- [RMSE vs. R²](https://www.statology.org/rmse-vs-r-squared/)
+- [Logistic Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
