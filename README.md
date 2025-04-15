@@ -49,4 +49,7 @@ Here is a heatmap of the data:
 
 **Skills:** Python, Streamlit, Pandas, Scikit-learn, Matplot | Data Visualization, Data Problem-Solving, Machine Learning
 
-**Preview:**
+**Preview:** Utilizing the information on linear and logistic regression, the app allows users to experiment with different datasets.
+
+Here is an ROC curve of the Titanic Dataset with "Sex" and "Fare" as the features and "Embarked" as the Target Variable:
+
