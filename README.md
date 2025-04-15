@@ -53,3 +53,4 @@ Here is a heatmap of the data:
 
 Here is an ROC curve of the Titanic Dataset with "Sex" and "Fare" as the features and "Embarked" as the Target Variable:
 
+![ROC Curve](assets/sample_ROC_curve.png)
