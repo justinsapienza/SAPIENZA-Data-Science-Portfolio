@@ -83,3 +83,7 @@ Links for further regression information!
 - [Linear Regression](https://vita.had.co.nz/papers/tidy-data.pdf](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.fit))
 - [RMSE vs. R²](https://www.statology.org/rmse-vs-r-squared/)
 - [Logistic Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+
+Samples
+-------
+![Linear Regression Accuracy Sample](/Users/justinsapienza/Documents/GitHub/SAPIENZA-Data-Science-Portfolio/MLStreamlitApp/assets/linear_regression_sample.png)
