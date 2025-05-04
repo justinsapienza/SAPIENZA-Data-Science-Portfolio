@@ -15,8 +15,26 @@ Machine learning is when humans give the computer the input and the output for t
 - Formulate: Build a model.
 - Predict: Use the model to forecast new outcomes.
 
-Linear Regression
--------------------
+Instructions
+------------
+Step-by-step instructions on how to run the app locally and a link to the deployed version!
+1. Create a python file
+2. Import the streamlit library
+```python
+import streamlit as st
+```
+3. Right click on the file and select "Copy Relative Path"
+4. Open the terminal in the bottom right corner
+5. Type into the terminal "streamlit run" and paste the relative path
+6. Hit enter
+7. The app will open as a local host in your browser
+
+Here is a link to the [deployed version](https://sapienza-data-science-portfolio-iv2mfzqqgu9duwbxztczgj.streamlit.app/) of the app
+
+App Features
+------------
+**Linear Regression**
+***
 **When to Use It:**
 - Target is numeric.
 - Relationship is roughly linear.
@@ -30,8 +48,8 @@ Linear Regression
 - “How can we predict a continuous outcome based on known inputs?”
 - “What is the relationship between these features and the target?”
 
-Logistic Regression
--------------------
+**Logistic Regression**
+***
 **When to Use It:**
 - Target: Binary Category (Yes/No, Pass/Fail, 1/0)
 - Relationship: Features influence the probability of outcome ((log-)odds of event happening).
@@ -44,37 +62,29 @@ Target: Always categorical
 - “What factors significantly impact the probability of a specific outcome?”
 - “How likely is a certain event or class to occur?”
 
-Instructions
-------------
-Step-by-step instructions on how to run the app locally and a link to the deployed version:
-1. Import the streamlit library in Python and assign it as st
-2. Copy the relative path of the file
-3. Open the terminal
-4. Type "streamlit run" and paste the relative path
-5. Hit enter
-6. The app will open as a local host in your browser
-7. Here is a link to the [deployed version](https://sapienza-data-science-portfolio-iv2mfzqqgu9duwbxztczgj.streamlit.app/) of the app
-
-Libraries
-------------
-- import **streamlit** as st
-  - Streamlit for interactive web application
-- import **numpy** as np
-  - NumPy for numerical computations
-- import **pandas** as pd
-  - Pandas for data manipulation and analysis
-- import **matplotlib.pyplot** as plt
-  - Matplotlib for plotting graphs
-- from **sklearn.linear_model** import LinearRegression
-  - Linear Regression model
-- from **sklearn.model_selection** import train_test_split
-  - Split data into training and testing sets
-- from **sklearn.metrics** import mean_squared_error, r2_score
-  - Metrics for evaluating model performance
-- from **sklearn.linear_model** import LogisticRegression
-  - Logistic Regression model
-- from **sklearn.metrics** import accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve
-  - Metrics for model evaluation
+**Libraries**
+***
+- Streamlit: interactive web application
+- NumPy: numerical computations
+- Pandas: for data manipulation and analysis
+- Matplotlib: plotting graphs
+- Sklearn.linear_model: linear regression model
+- Sklearn.model_selection: split data into training and testing sets
+- Sklearn.metrics: metrics for evaluating model performance
+- Sklearn.linear_model: logistic regression model
+- Sklearn.metrics: metrics for model evaluation
+ 
+```python
+import streamlit as st
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve
+```
 
 References
 ----------
