@@ -66,7 +66,7 @@ Principal Component Analysis
 
 References
 ----------
-See additional references that informed my app creation
+See additional references that informed my app creation:
 
 - [K-Means Clustering Overview](https://www.geeksforgeeks.org/k-means-clustering-introduction/)
 - [K-Means Clustering Algorithm](https://stanford.edu/~cpiech/cs221/handouts/kmeans.html)
