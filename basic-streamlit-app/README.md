@@ -24,18 +24,17 @@ import streamlit as st
 App Features
 ------------
 **Palmer's Penguins Dataset**
-
+***
 The Palmer's Penguins Dataset is a widely used dataset for data visualization and machine learning.
 
-Species Included:
+**Species Included:**
 - Adelie Penguins (152 individuals)
 - Gentoo Penguins (124 individuals)
 - Chinstrap Penguins (68 individuals)
 Total Instances: 344 Penguins
 
-Features in the Dataset:
-
-Each penguin is described by several attributes:
+**Features in the Dataset:**
+Each penguin is described by several attributes.
 - Bill Length (mm) - Measurement of the penguin's beak length.
 - Bill Depth (mm) – Thickness of the penguin’s beak.
 - Flipper Length (mm) – Wing length, useful for species identification.
@@ -44,6 +43,16 @@ Each penguin is described by several attributes:
 - Island – The island where the penguin was observed (Biscoe, Dream, or Torgersen).
 
 The Palmer's Penguins Dataset is ideal for teaching basic streamlit widgets and machine learning techniques that allow for enhanced data visualizations.
+
+**Widgets**
+***
+**Sliders:** allows users to select a value within a specified range
+
+Useful for adjusting parameters.
+
+**Dropdowns:** allows users to choose an option from a predefined list
+
+Useful for categorical inputs, model selections, and filtering data.
 
 References
 ----------
