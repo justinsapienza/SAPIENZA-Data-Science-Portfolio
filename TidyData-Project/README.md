@@ -14,10 +14,33 @@ The goal of this project is to transform and clean a messy dataset into a tidy f
 
 By achieving this format, the project seeks to unlock the full potential of the dataset, making it more accessible and usable for data analysis, visualization, and modeling processes.
 
+Instructions
+------------
+Step-by-step instructions on how to run the notebook:
+1. Download the '08 Olympic Medalists Dataset
+2. Create a Python file
+3. Import the pandas library
+4. Import the pyplot functions in the matplotlib package
+5. Import the seaborn library
+6. Right click on the dataset file and copy the relative path
+7. Load the CSV file using the relative path
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the CSV file
+df = pd.read_csv("data/olympics_08_medalists.csv") # Use the relative path of the CSV
+```
+
+Refer to the [Data Cleaning Codebook](Data_Cleaning_Visualization.ipynb) for the entire notebook.
+
 Dataset Description
 -------------------
-The dataset for this project represents information about Olympic medalists in the 2008 Olympics.
+**2008 Olympic Medalist Dataset**
 
+The dataset consists of all olympic medalists from the 2008 olympics in an untidy format. The goal os the project is to clean the dataset for it to be used to make meaningful visualizations.
+***
 **Columns (Variables)**
 - medalist_name: names of the medalists
 - Multiple columns that combine event and gender
@@ -28,15 +51,6 @@ The dataset for this project represents information about Olympic medalists in t
 **Potential Issues**
 
 The original dataset is in a wide format. This means that columns are structured as combinations of variables. These columns need to be melted into a long format to separate variables cleanly.
-
-Instructions
-------------
-Step-by-step instructions on how to run the notebook:
-1. Import the pandas library in Python and assign it as pd
-2. Import the pyplot functions in the matplotlib package and assign it as plt
-3. Import the seaborn visualization library and assign it as sns
-4. Load the CSV file of the dataset using the relative path for the CSV
-5. Refer to the [Data Cleaning Codebook](Data_Cleaning_Visualization.ipynb) for the entire notebook.
 
 References
 ----------
