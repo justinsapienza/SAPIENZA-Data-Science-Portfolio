@@ -35,9 +35,7 @@ Here is a link to the deployed version(insert link here) of the app!
 App Features
 ------------
 **Hyperparamter Selection**
-
 ***
-
 K-Means Clustering
 - Select features for clustering
 - Adjust number of clusters
@@ -54,9 +52,7 @@ Principal Component Analysis
 - Select number of principal components
   
 **Visualizations**
-
 ***
-
 K-Means Clustering
 - clusters graph
 - (Need to add elbow plots and silhouette scores)
