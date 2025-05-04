@@ -6,12 +6,12 @@ Project Overview
 ----------------
 The goal of this project is to use unsupervised machine learning to explore hidden patterns in data using three type of methodologies: **k-means clustering**, **hierarchical clustering**, and **principal component analysis**. My app is an interactive learning tool that educates users on the unsupervised learning techniques and allows for hands-on practice. Here's what users can do with it:
 
-📍**Tutorials**
+**Tutorials**
 - understand the theory behind each unsupervised model
 - learn key equations, algorithms, and visualization techniques
 - explore real-world applications
 
-📍**Models**
+**Models**
 - upload your own dataset or use the preloaded dataset
 - adjust hyperparamters (number of clusters, etc.)
 - execute each model and visualize results
@@ -34,7 +34,9 @@ Here is a link to the deployed version(insert link here) of the app!
 
 App Features
 ------------
-📁 Hyperparamter Selection 
+**Hyperparamter Selection**
+
+***
 
 K-Means Clustering
 - Select features for clustering
@@ -51,7 +53,9 @@ Principal Component Analysis
 - Select features for PCA
 - Select number of principal components
   
-📊 Visualizations
+**Visualizations**
+
+***
 
 K-Means Clustering
 - clusters graph
