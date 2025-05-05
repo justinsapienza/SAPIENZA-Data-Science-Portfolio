@@ -1,92 +1,101 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.decomposition import PCA
+import scipy.cluster.hierarchy as sch
 from sklearn.preprocessing import StandardScaler
 from sklearn.datasets import load_iris
+from sklearn.cluster import AgglomerativeClustering
 
-# App Title
-st.title("Interactive Principal Component Analysis (PCA)")
+# Set up the Streamlit app title
+st.title("Interactive Hierarchical Clustering")
 
 # Section 1: Upload Data or Use Sample
 st.header("Upload Your Dataset or Use Sample")
+
+# Allows user to upload their own dataset for hierarchical clustering
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 
+# Load dataset either from user upload or use the Iris dataset as a default
 if uploaded_file:
-    data = pd.read_csv(uploaded_file)
-    st.write("File Uploaded Successfully!")
+    data = pd.read_csv(uploaded_file)  # Read the uploaded CSV file into a Pandas DataFrame
+    st.write("File Uploaded Successfully!")  # Notify the user of successful upload
 else:
-    st.write("Using Sample Data: Iris Dataset")
-    iris = load_iris()
-    data = pd.DataFrame(iris.data, columns=iris.feature_names)
+    st.write("Using Sample Data: Iris Dataset")  # Default dataset if no file is uploaded
+    iris = load_iris()  # Load the built-in Iris dataset from sklearn
+    data = pd.DataFrame(iris.data, columns=iris.feature_names)  # Convert dataset into Pandas DataFrame
 
-# Preview Data
+# Preview the first few rows of the dataset
 st.subheader("Data Preview")
-st.write("Displaying a few rows from the dataset to give an overview of the features used in PCA.")
-st.write(data.head())
+st.write(data.head())  # Display a preview of the dataset to understand its structure
 
-# Feature Selection
-st.header("Select Features for PCA")
-st.write("Choose which features from the dataset to include in PCA. Principal components are extracted from these selected features.")
-selected_columns = st.multiselect("Choose columns:", data.columns.tolist(), default=data.columns.tolist())
+# Section 2: Feature Selection
+st.header("Select Features for Clustering")
 
-# Standardize Data
-st.header("Standardizing the Data")
+# Allows users to select which features they want to use for clustering
+selected_columns = st.multiselect("Choose columns:", data.columns.tolist(), default=data.columns[:2].tolist())
+
+# Extract only the selected features for clustering
+data_selected = data[selected_columns]
+
+# Step 3: Standardizing the Data
+scaler = StandardScaler()  # Initialize a scaler to normalize feature values
+data_scaled = scaler.fit_transform(data_selected)  # Standardize the selected features to have zero mean and unit variance
+
+# Step 4: Hyperparameter Selection
+st.header("Adjust Hierarchical Clustering Parameters")
+
+# User selects a linkage method, which determines how clusters are merged
+linkage_method = st.selectbox("Select Linkage Method", ["single", "complete", "average"])
+
+# User selects a distance metric to measure similarity between points
+distance_metric = st.selectbox("Select Distance Metric", ["euclidean", "manhattan", "cosine"])
+
+# Step 5: Compute and Visualize Dendrogram
+st.header("Dendrogram Visualization")
+
+# Generate hierarchical clustering dendrogram based on user-selected parameters
+fig, ax = plt.subplots(figsize=(10, 5))
+dendrogram = sch.dendrogram(sch.linkage(data_scaled, method=linkage_method, metric=distance_metric))
+st.pyplot(fig)  # Display the dendrogram in the Streamlit app
+
 st.write("""
-Standardizing ensures that all features contribute equally to PCA.  
-Without standardization, features with larger scales may dominate the principal components.
-""")
-scaler = StandardScaler()
-data_scaled = scaler.fit_transform(data[selected_columns])
-
-# Select Number of Principal Components
-st.header("Selecting Principal Components")
-st.write("""
-The number of principal components determines how much of the original variance is retained.  
-Choosing fewer components simplifies the data while preserving patterns.
-""")
-n_components = st.slider("Select Number of Principal Components:", 1, len(selected_columns), 2)
-
-# Apply PCA
-pca = PCA(n_components=n_components)
-principal_components = pca.fit_transform(data_scaled)
-
-# Create DataFrame for Principal Components
-pc_df = pd.DataFrame(principal_components, columns=[f"PC {i+1}" for i in range(n_components)])
-
-# Visualization: Explained Variance
-st.header("Explained Variance of Principal Components")
-st.write("""
-The **explained variance ratio** shows how much information is retained in each principal component.  
-Higher values indicate that the component captures more of the dataset's structure.
+### Understanding the Dendrogram:
+- Each **horizontal line** represents a cluster merging event.
+- The **height** of a merge indicates the similarity between clusters.
+- **Cutting the dendrogram at a chosen level** determines the final number of clusters.
 """)
 
+# Step 6: Select Number of Clusters
+st.subheader("Choose the Number of Clusters")
+
+# User selects the number of clusters dynamically via a slider
+num_clusters = st.slider("Select Number of Clusters", 2, 10, 3)
+
+# Apply Agglomerative Hierarchical Clustering based on selected parameters
+model = AgglomerativeClustering(n_clusters=num_clusters, linkage=linkage_method)
+clusters = model.fit_predict(data_scaled)  # Fit the model and assign cluster labels
+data["Cluster"] = clusters  # Attach cluster labels to the dataset
+
+# Display assigned clusters in the dataset
+st.subheader("Cluster Assignments")
+st.write(data)  # Show dataset with assigned cluster labels
+
+# Step 7: Cluster Visualization
+st.subheader("Cluster Visualization")
+
+# Create a scatter plot to visualize clustered data points
 fig, ax = plt.subplots()
-ax.bar(range(1, n_components+1), pca.explained_variance_ratio_, color='skyblue')
-ax.set_xlabel("Principal Component")
-ax.set_ylabel("Explained Variance Ratio")
-ax.set_title("Variance Explained by Each Component")
+ax.scatter(data_selected.iloc[:, 0], data_selected.iloc[:, 1], c=clusters, cmap='viridis', alpha=0.6)  # Plot data points colored by cluster assignment
+ax.set_xlabel(selected_columns[0])  # Label x-axis using selected feature name
+ax.set_ylabel(selected_columns[1])  # Label y-axis using selected feature name
 st.pyplot(fig)
 
-# Visualization: Scatter Plot of Principal Components
-st.header("Data Projection onto Principal Components")
 st.write("""
-This scatter plot visualizes how observations are distributed after PCA transformation.  
-
-Each point represents a data observation, plotted in terms of its principal components.     
-- If points group together, this suggests **natural clustering** based on shared characteristics.
-- If points spread widely, it indicates **high variation among observations**.
-- Observations positioned **closer together** are more similar, while those farther apart differ significantly based on principal components.
+### Understanding the Clustering Visualization:
+- Each data point is assigned to a cluster based on similarity.
+- Different linkage methods produce varying clustering patterns.
+- Adjusting the **number of clusters** allows you to explore different partitioning approaches.
 """)
 
-if n_components >= 2:
-    fig, ax = plt.subplots()
-    sns.scatterplot(x=pc_df.iloc[:, 0], y=pc_df.iloc[:, 1], alpha=0.7)
-    ax.set_xlabel("PC 1")
-    ax.set_ylabel("PC 2")
-    ax.set_title("Principal Component Projection")
-    st.pyplot(fig)
-
-st.write("Adjust the number of principal components and explore how PCA transforms the data.")
+st.write("Try adjusting the number of clusters and linkage method to analyze different clustering behaviors.")
