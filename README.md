@@ -7,7 +7,7 @@ My Introduction to Data Science Portfolio showcases my journey in data science, 
 Please explore!
 ___
 
-## Projects
+# Projects
 
 ### **[Streamlit App](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/basic-streamlit-app)**
 
@@ -54,3 +54,15 @@ Here is a heatmap of the data:
 Here is an ROC curve of the Titanic Dataset with "Sex" and "Fare" as the features and "Embarked" as the Target Variable:
 
 ![ROC Curve](assets/sample_ROC_curve.png)
+
+***
+
+### **[Unsupervised Machine Learning App](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/MLUnsupervisedApp)**
+
+**Description:** The unsupervised machine learning app is an interactive learning tool for unsupervised machine learning, focusing on three key models: **k-means clustering**, **hierarchical clustering**, and **principal component analysis**. I combine theoretical tutorials with hands-on model experimentation to allow users to deepen their understanding through interactive features. My app teaches foundation unsupervised machine learning concepts, provides interactive models allowing users to adjust hyperparamters and see results, allows user to upload datasets, and dynamically visualizes results. Overall, the app builds on my understanding of machine learning by allowing me to leverage my skills to teach users the necessary models for unsupervised learning. By bridging the gap between theory and application, the app strengthens my ability to design machine learning by incroporating clustering and dimensionality reduction in meaningful ways.
+
+**Experience:** This app showcases my ability to develop interactive Python applications and deploy machine learning models in a user-friendly format. My app uses Streamlit to create user interactions, demonstrating my proficiency in building accessible machine learning tools. Through sliders, dropdowns, and dynamic visualiations, I showcase my skills in making complex models understandable and interactive. By giving the user the ability to upload their own dataset, I ensure smooth data handling and preprocessing for machine learning model deployment. My app translates advanced techniques into intuitive and interactive lessons. Overall, this app complements my broader portfolio by introducing unsupervised machine learning techniques into my skillset, while building upon the skills I have developed in user interactivity and visualization. This project is another example of my increasing skills in Python and problem solving through data processes and visualiation.
+
+**Skills:**
+
+**Preview:**
