@@ -45,9 +45,5 @@ st.markdown(
     - Upload their own dataset
     - adjust model parameters
     - execute models
-    
-    **4. Analysis & Insights**  
-    - comparison of results from K-means, hierarchical clustering, and PCA
-    - visualizations for better interpretation
     """
 )
