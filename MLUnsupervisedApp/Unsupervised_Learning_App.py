@@ -37,8 +37,8 @@ st.markdown(
     **2. Tutotials for Each Model**  
     Each model tutorial includes:
     - theory behind the model
-    - key equations and algorithms
     - real-world applications
+    - a demo model
 
     **3. Interactive Practice Models**  
     Each model has an interactive interface, allowing users to:
