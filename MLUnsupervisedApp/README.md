@@ -45,7 +45,6 @@ K-Means Clustering
 Hierarchical Clustering
 - Select features for clustering
 - Select linkage method
-- Select distance metric
   
 Principal Component Analysis
 - Select features for PCA
