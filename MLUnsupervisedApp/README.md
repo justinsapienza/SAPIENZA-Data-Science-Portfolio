@@ -63,6 +63,26 @@ Principal Component Analysis
 - Variance Histogram
 - Scatterplot
 
+**Libraries**
+***
+```python
+import streamlit as st
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from sklearn.datasets import make_blobs
+import seaborn as sns
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.datasets import load_iris
+import scipy.cluster.hierarchy as sch
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.decomposition import PCA
+```
+
 References
 ----------
 See additional references that informed my app creation:
