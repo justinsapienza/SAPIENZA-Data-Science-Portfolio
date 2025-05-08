@@ -65,4 +65,5 @@ Here is an ROC curve of the Titanic Dataset with "Sex" and "Fare" as the feature
 
 **Skills:** Python, Streamlit, Pandas, Numpy, Seaborn, sklearn, Matplot | Unsupervised Modeling, Data Visualization, Data Problem-Solving, Machine Learning
 
-**Preview:**
+**Preview:** PCA Sample Graph
+![PCA Sample](assets/pcasample.png)
