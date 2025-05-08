@@ -63,6 +63,6 @@ Here is an ROC curve of the Titanic Dataset with "Sex" and "Fare" as the feature
 
 **Experience:** This app showcases my ability to develop interactive Python applications and deploy machine learning models in a user-friendly format. My app uses Streamlit to create user interactions, demonstrating my proficiency in building accessible machine learning tools. Through sliders, dropdowns, and dynamic visualiations, I showcase my skills in making complex models understandable and interactive. By giving the user the ability to upload their own dataset, I ensure smooth data handling and preprocessing for machine learning model deployment. My app translates advanced techniques into intuitive and interactive lessons. Overall, this app complements my broader portfolio by introducing unsupervised machine learning techniques into my skillset, while building upon the skills I have developed in user interactivity and visualization. This project is another example of my increasing skills in Python and problem solving through data processes and visualiation.
 
-**Skills:**
+**Skills:** Python, Streamlit, Pandas, Numpy, Seaborn, sklearn, Matplot | Unsupervised Modeling, Data Visualization, Data Problem-Solving, Machine Learning
 
 **Preview:**
