@@ -69,7 +69,7 @@ st.pyplot(fig)
 # Explanation of the elbow method
 st.write("""
 ### Understanding the Elbow Method:
-- The **WCSS** measures how compact clusters are. Lower values indicate better clustering.
+- The **Within-Cluster Sum of Squares** measures how compact clusters are. Lower values indicate better clustering.
 - The "elbow" in the graph represents the point where additional clusters **no longer significantly reduce WCSS**.
 - Before the elbow, reducing WCSS is **rapid**, meaning more clusters improve the separation of data points.
 - After the elbow, **diminishing returns** occur, meaning additional clusters do not improve the clustering quality much.
@@ -101,9 +101,13 @@ st.write("""
 ## Step 6: Visualize the Clusters
 st.subheader("Step 6: Visualizing the K-Means Clustering")
 fig, ax = plt.subplots()
-ax.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis')  # Plot data points colored by cluster
+scatter = ax.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis', label="Data Points")  # Plot data points colored by cluster
 ax.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=200, marker="X", c="red", label="Centroids")  # Plot centroids
-ax.legend()
+# Create a legend based on the scatter plot
+legend1 = ax.legend(*scatter.legend_elements(), title="Clusters")
+ax.add_artist(legend1)
+# Add the label for centroids
+ax.legend(["Centroids"], loc="upper right")
 st.pyplot(fig)
 
 # Explanation of the visualized clusters
