@@ -65,5 +65,8 @@ Here is an ROC curve of the Titanic Dataset with "Sex" and "Fare" as the feature
 
 **Skills:** Python, Streamlit, Pandas, Numpy, Seaborn, sklearn, Matplot | Unsupervised Modeling, Data Visualization, Data Problem-Solving, Machine Learning
 
-**Preview:** PCA Sample Graph
+**Preview:** The app allows users to experiment with the different types of unsupervised machine learning and upload their own dataset to interact with the models.
+
+Here is a pairplot showing the relationships between sepal length, sepal width, and patel length from the Iris Dataset.
+
 ![PCA Sample](assets/pcasample.png)
