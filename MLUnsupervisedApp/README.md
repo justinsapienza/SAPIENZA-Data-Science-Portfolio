@@ -30,7 +30,7 @@ import streamlit as st
 6. Hit enter
 7. The app will open as a local host in your browser
 
-Here is a link to the deployed version(insert link here) of the app!
+Here is a link to the [deployed version](https://sapienza-data-science-portfolio-rev9phf5trxlg9cw8qdg23.streamlit.app/) of the app!
 
 App Features
 ------------
