@@ -72,3 +72,7 @@ See additional references that informed my app creation:
 - [Hierarchical Clustering Overview](https://www.geeksforgeeks.org/hierarchical-clustering/)
 - [PCA Overview](https://www.geeksforgeeks.org/principal-component-analysis-pca/)
 - [PCA Step-by-Step Guide](https://www.turing.com/kb/guide-to-principal-component-analysis)
+
+K-Means Clustering Sample Visualization
+---------------------------------------
+![K-Means Clustering Sample](assets/k-means_sample.png)
