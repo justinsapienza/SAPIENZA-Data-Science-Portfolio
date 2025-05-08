@@ -7,7 +7,7 @@ My Introduction to Data Science Portfolio showcases my journey in data science, 
 Please explore!
 ___
 
-# Projects
+# At a Glance
 
 ### **[Streamlit App](https://github.com/justinsapienza/SAPIENZA-Data-Science-Portfolio/tree/main/basic-streamlit-app)**
 
