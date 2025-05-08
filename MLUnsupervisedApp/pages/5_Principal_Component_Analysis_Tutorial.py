@@ -1,187 +1,135 @@
 import streamlit as st
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import scipy.cluster.hierarchy as sch
+from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import AgglomerativeClustering
-from sklearn.decomposition import PCA  # Import PCA for dimensionality reduction
+from sklearn.datasets import make_blobs
 
-# Set up the Streamlit app title
-st.title("Interactive Hierarchical Clustering")
+# Initialize the Streamlit app with a title
+st.title("Principal Component Analysis (PCA) Tutorial")
 
-# Introduction
+# Section 1: Explanation of PCA
+st.header("Understanding Principal Component Analysis")
 st.write("""
-## Understanding PCA
-**Principal Component Analysis (PCA)** is a dimensionality reduction technique that:
-- Finds the best direction for **maximum data variance**.
-- Compresses data while **preserving essential patterns**.
-- Helps in **visualizing high-dimensional datasets**.
+**Principal Component Analysis (PCA)** is a statistical method used to reduce dimensionality while retaining key patterns. 
+It simplifies datasets while preserving their essential structure.
+
+### Key Steps:
+1. **Standardize the Data** - Normalize features to ensure equal importance.
+2. **Compute Covariance Matrix** - Identify relationships between variables.
+3. **Find Eigenvalues and Eigenvectors** - Determine principal components.
+4. **Select Principal Components** - Keep the most informative ones.
+5. **Transform Data** - Project data onto the selected principal components.
 """)
 
-# Key Concepts in PCA
+# Section 2: Real-World Applications of PCA
+st.header("Real-World Applications")
 st.write("""
-## Finding the Best Direction
-- PCA identifies the direction in which the **data spreads the most**, meaning **maximum variance**.
-- These directions, called **principal components**, form new axes that capture differences in the dataset.
-
-## Variance Explained
-- Each principal component explains a **portion** of the total variance.
-- The **first principal component** captures **the highest variance**, while subsequent components contribute **progressively less**.
-
-## Rotation and Compression
-- PCA **rotates** the dataset to align with these new principal component axes.
-- It **compresses** the data while preserving the most **meaningful information**, removing redundant features.
+PCA is widely used in various fields, including:
+- **Image Compression** - Reducing storage while preserving key details.
+- **Finance** - Simplifying stock market trends using fewer factors.
+- **Genomics** - Analyzing gene expression patterns efficiently.
+- **Speech Recognition** - Reducing noise for clear speech processing.
 """)
 
-# Section 1: Demo Dataset Creation
+# Section 3: Interactive Practice for PCA
 st.header("Interactive PCA Demo")
+st.write("Use the interactive elements below to explore PCA.")
 
-# Generate synthetic customer data for clustering
-np.random.seed(42)  # Ensure reproducibility
-data = pd.DataFrame({
-    "Customer ID": range(1, 51),  # Unique customer IDs
-    "Annual Income (k$)": np.random.randint(15, 120, 50),  # Simulated annual income
-    "Spending Score (1-100)": np.random.randint(1, 100, 50)  # Simulated spending score
-})
-
-# Preview the first few rows of the demo dataset
-st.subheader("Demo Data Preview")
-st.write(data.head())  # Display sample dataset rows
-
-# Section 2: Feature Selection
-st.header("Select Features for Clustering")
-
-# Enables users to choose features for clustering analysis
-selected_columns = st.multiselect("Choose columns:", data.columns[1:], default=["Annual Income (k$)", "Spending Score (1-100)"])
-
-# Extract only the selected features for clustering
-data_selected = data[selected_columns]
-
-# Step 3: Standardizing the Data
-scaler = StandardScaler()  # Initialize the scaler for feature normalization
-data_scaled = scaler.fit_transform(data_selected)  # Apply normalization to standardize feature values
-
-# Step 4: Hyperparameter Selection
-st.header("Adjust Hierarchical Clustering Parameters")
-
-# User selects a linkage method, which determines how clusters are merged
-linkage_method = st.selectbox("Select Linkage Method", ["single", "complete", "average"])
-
-# Explanation of linkage methods
+## Step 1: Generate Sample Data
+st.subheader("Step 1: Generate Sample Data")
 st.write("""
-### Understanding Linkage Methods:
-- **Single Linkage (Minimum Distance)**  
-  - Merges clusters based on the shortest distance between individual points.  
-  - Can lead to **long chains of connected points**, instead of well-defined groups.  
-
-- **Complete Linkage (Maximum Distance)**  
-  - Merges clusters using the farthest distance between points.  
-  - Creates **compact and evenly distributed clusters**, avoiding elongated shapes.  
-
-- **Average Linkage (Mean Distance)**  
-  - Merges clusters using the average distance between all points.  
-  - Balances between single and complete linkage, creating **moderate-sized clusters**.  
+To apply PCA, we first need a dataset. Here, we generate synthetic data with multiple features 
+to demonstrate how PCA reduces dimensionality.
 """)
 
-# Step 5: Compute and Visualize Dendrogram (Truncated)
-st.header("Dendrogram Visualization")
+# Allow user to select the number of data points interactively
+n_samples = st.slider("Number of data points:", 100, 1000, 300)
 
-# Generate a truncated dendrogram for hierarchical clustering based on selected parameters
-fig, ax = plt.subplots(figsize=(10, 5))
-dendrogram = sch.dendrogram(
-    sch.linkage(data_scaled, method=linkage_method),  # Perform hierarchical clustering
-    truncate_mode="level",  # Truncate dendrogram for better readability
-    p=10,  # Limit the number of levels shown
-    show_leaf_counts=True  # Display the number of points per cluster
-)
-st.pyplot(fig)  # Display dendrogram in Streamlit
+# Generate synthetic data using make_blobs
+X, _ = make_blobs(n_samples=n_samples, centers=5, n_features=5, random_state=42)
 
+st.write("Sample data generated successfully!")
+
+## Step 2: Select Number of Principal Components
+st.subheader("Step 2: Select Principal Components")
 st.write("""
-### Understanding the Dendrogram:
-- Each **horizontal line** represents a cluster merging event.
-- The **height** of a merge indicates the similarity between clusters.
-- The dendrogram is **truncated** to improve readability while keeping essential clustering information.
+PCA reduces the number of dimensions while retaining **most of the data’s variance**. 
+Select the number of **principal components** to keep.
 """)
 
-# Step 6: Select Number of Clusters
-st.subheader("Choose the Number of Clusters")
+num_components = st.slider("Select Number of Principal Components:", 1, X.shape[1], 2)
+st.write(f"You have selected {num_components} principal components.")
 
-# User sets the number of clusters dynamically via slider
-num_clusters = st.slider("Select Number of Clusters", 2, 10, 3)
+## Step 3: Apply PCA
+st.subheader("Step 3: Applying PCA")
+st.write("""
+Before applying PCA, it is essential to **standardize the dataset** to ensure that all features 
+have equal importance. Then, we perform PCA to extract the key components.
+""")
 
-# Apply Agglomerative Hierarchical Clustering based on selected parameters
-model = AgglomerativeClustering(n_clusters=num_clusters, linkage=linkage_method)
-clusters = model.fit_predict(data_scaled)  # Assign cluster labels to data points
-data["Cluster"] = clusters  # Attach cluster labels to the dataset
+scaler = StandardScaler()  # Standardize the data
+X_scaled = scaler.fit_transform(X)
 
-# Display assigned clusters in the dataset
-st.subheader("Cluster Assignments")
-st.write(data)
+pca = PCA(n_components=num_components)  # Apply PCA
+X_pca = pca.fit_transform(X_scaled)
 
-# Step 7: Cluster Visualization with Legend
-st.subheader("Cluster Visualization")
+st.write("PCA transformation completed!")
 
-# Create a scatter plot to visualize clustered data points
+# Step 4: Visualize Explained Variance
+st.subheader("Step 4: Explained Variance by Principal Components")
+st.write("""
+Principal components are ranked based on the **amount of variance** they explain. 
+The first component captures the highest variance, while others capture progressively less. 
+This bar chart illustrates how much variance is explained by each principal component.
+""")
+
+explained_variance = pca.explained_variance_ratio_
+
 fig, ax = plt.subplots()
-scatter = ax.scatter(data_selected.iloc[:, 0], data_selected.iloc[:, 1], c=clusters, cmap="viridis", alpha=0.6, label="Data Points")  # Color-coded data points
-centroids = ax.scatter(
-    np.mean(data_selected.iloc[:, 0]), np.mean(data_selected.iloc[:, 1]), 
-    s=200, marker="X", c="red", label="Centroids"  # Red Xs mark estimated centroids
-)
-
-# Add a legend to clarify clusters and centroids
-legend1 = ax.legend(*scatter.legend_elements(), title="Clusters")  # Create cluster legend
-ax.add_artist(legend1)  # Display cluster legend
-ax.legend(["Centroids"], loc="upper right", title="Cluster Centers")  # Additional centroid legend
-
-# Label axes with selected feature names
-ax.set_xlabel(selected_columns[0])  # Label x-axis
-ax.set_ylabel(selected_columns[1])  # Label y-axis
-
+ax.bar(range(1, len(explained_variance) + 1), explained_variance, color='blue')
+ax.set_xlabel("Principal Components")
+ax.set_ylabel("Explained Variance Ratio")
+ax.set_title("Variance Distribution Across Principal Components")
 st.pyplot(fig)
 
+## Step 5: Visualize PCA Projection
+st.subheader("Step 5: Visualizing PCA Projection")
 st.write("""
-### Understanding the Clustering Visualization:
-- Each data point is assigned to a cluster based on similarity.
-- Different linkage methods produce varying clustering patterns.
-- The **red X markers** represent estimated **centroids**, helping to understand cluster centers.
+This scatter plot represents the dataset after transformation using PCA. Each point is now 
+represented by its principal components instead of the original features.
 """)
 
-# Step 8: PCA Visualization for High-Dimensional Data (Only when more than two features are selected)
-if len(selected_columns) > 2:
-    st.subheader("PCA Projection for High-Dimensional Data")
-
-    # Explanation of PCA Visualization
-    st.write("""
-    ### What Does the PCA Plot Show?
-    - Since more than two features were selected, this plot **reduces the dimensions** using **Principal Component Analysis (PCA)**.
-    - PCA simplifies the dataset by projecting data onto two principal components.
-    - It helps visualize clusters in a **two-dimensional space**, making it easier to interpret high-dimensional data.
-    """)
-
-    # Apply PCA to reduce dimensionality to 2 components
-    pca = PCA(n_components=2)
-    pca_transformed = pca.fit_transform(data_scaled)  # Transform scaled data into two PCA components
-
-    # Create a PCA scatter plot
+if num_components == 2:
+    # Standard 2D scatter plot for two principal components
     fig, ax = plt.subplots()
-    scatter = ax.scatter(pca_transformed[:, 0], pca_transformed[:, 1], c=clusters, cmap="viridis", alpha=0.6, label="Data Points")  # Color points by cluster
-    centroids = ax.scatter(
-        np.mean(pca_transformed[:, 0]), np.mean(pca_transformed[:, 1]), 
-        s=200, marker="X", c="red", label="Centroids"  # Red Xs mark estimated centroids
-    )
+    ax.scatter(X_pca[:, 0], X_pca[:, 1], alpha=0.6, cmap="viridis")
+    ax.set_xlabel("Principal Component 1")
+    ax.set_ylabel("Principal Component 2")
+    ax.set_title("Data Projected onto Principal Components")
+    st.pyplot(fig)
 
-    # Add a legend to clarify clusters and centroids
-    legend1 = ax.legend(*scatter.legend_elements(), title="Clusters")  # Create cluster legend
-    ax.add_artist(legend1)  # Display cluster legend
-    ax.legend(["Centroids"], loc="upper right", title="Cluster Centers")  # Additional centroid legend
+elif num_components > 2:
+    # Pairplot visualization if more than two principal components are selected
+    st.write("""
+    Since more than two principal components are selected, the pairplot below shows 
+    relationships between different components.
+    """)
+    
+    pca_df = pd.DataFrame(X_pca, columns=[f"PC{i+1}" for i in range(num_components)])    
+    pairplot_fig = sns.pairplot(pca_df)
+    st.pyplot(pairplot_fig.fig)
 
-    # Label axes as PCA components
-    ax.set_xlabel("Principal Component 1")  # Label x-axis
-    ax.set_ylabel("Principal Component 2")  # Label y-axis
+# Explanation of PCA visualization
+st.write("""
+### Understanding the Visualization:
+- Each point represents a transformed data sample.
+- **Principal Component 1** captures the highest variance.
+- **Principal Component 2** captures the second-highest variance.
+- If more than two components are selected, pairwise relationships can be observed.
+- Reducing dimensions while retaining variance helps in **data exploration and visualization**.
+""")
 
-    st.pyplot(fig)  # Display PCA plot in Streamlit
-
-st.write("Try adjusting the number of clusters and linkage method to analyze different clustering behaviors.")
+st.write("Try adjusting the number of principal components using the slider above to see how PCA affects the dataset!")
