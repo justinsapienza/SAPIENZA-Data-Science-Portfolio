@@ -1,11 +1,11 @@
-import streamlit as st
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
-from sklearn.datasets import make_blobs
+import streamlit as st  # Import Streamlit for creating an interactive web-based application
+import numpy as np  # Import NumPy for numerical operations
+import pandas as pd  # Import Pandas for data handling and manipulation
+import matplotlib.pyplot as plt  # Import Matplotlib for plotting graphs
+import seaborn as sns  # Import Seaborn for statistical data visualization
+from sklearn.decomposition import PCA  # Import PCA from scikit-learn for dimensionality reduction
+from sklearn.preprocessing import StandardScaler  # Import StandardScaler to normalize features
+from sklearn.datasets import make_blobs  # Import make_blobs to generate synthetic clustering data
 
 # Initialize the Streamlit app with a title
 st.title("Principal Component Analysis (PCA) Tutorial")
@@ -13,7 +13,7 @@ st.title("Principal Component Analysis (PCA) Tutorial")
 # Section 1: Explanation of PCA
 st.header("Understanding Principal Component Analysis")
 st.write("""
-**Principal Component Analysis (PCA)** is a statistical method used to reduce dimensionality while retaining key patterns. 
+**Principal Component Analysis (PCA)** is a statistical method used to reduce dimensionality while retaining key patterns.
 It simplifies datasets while preserving their essential structure.
 
 ### Key Steps:
@@ -45,7 +45,7 @@ To apply PCA, we first need a dataset. Here, we generate synthetic data with mul
 to demonstrate how PCA reduces dimensionality.
 """)
 
-# Allow user to select the number of data points interactively
+# Create a slider for the user to select the number of data points dynamically
 n_samples = st.slider("Number of data points:", 100, 1000, 300)
 
 # Generate synthetic data using make_blobs
@@ -56,10 +56,11 @@ st.write("Sample data generated successfully!")
 ## Step 2: Select Number of Principal Components
 st.subheader("Step 2: Select Principal Components")
 st.write("""
-PCA reduces the number of dimensions while retaining **most of the data’s variance**. 
+PCA reduces the number of dimensions while retaining **most of the data’s variance**.
 Select the number of **principal components** to keep.
 """)
 
+# Create a slider for the user to select the number of principal components dynamically
 num_components = st.slider("Select Number of Principal Components:", 1, X.shape[1], 2)
 st.write(f"You have selected {num_components} principal components.")
 
@@ -70,30 +71,34 @@ Before applying PCA, it is essential to **standardize the dataset** to ensure th
 have equal importance. Then, we perform PCA to extract the key components.
 """)
 
-scaler = StandardScaler()  # Standardize the data
+# Standardize the dataset to ensure all features have a mean of 0 and variance of 1
+scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-pca = PCA(n_components=num_components)  # Apply PCA
+# Apply PCA using the selected number of components
+pca = PCA(n_components=num_components)
 X_pca = pca.fit_transform(X_scaled)
 
 st.write("PCA transformation completed!")
 
-# Step 4: Visualize Explained Variance
+# Step 4: Visualizing Explained Variance
 st.subheader("Step 4: Explained Variance by Principal Components")
 st.write("""
-Principal components are ranked based on the **amount of variance** they explain. 
-The first component captures the highest variance, while others capture progressively less. 
+Principal components are ranked based on the **amount of variance** they explain.
+The first component captures the highest variance, while others capture progressively less.
 This bar chart illustrates how much variance is explained by each principal component.
 """)
 
+# Extract explained variance for visualization
 explained_variance = pca.explained_variance_ratio_
 
+# Create a bar plot to display the variance distribution of principal components
 fig, ax = plt.subplots()
 ax.bar(range(1, len(explained_variance) + 1), explained_variance, color='blue')
-ax.set_xlabel("Principal Components")
-ax.set_ylabel("Explained Variance Ratio")
-ax.set_title("Variance Distribution Across Principal Components")
-st.pyplot(fig)
+ax.set_xlabel("Principal Components")  # Label x-axis
+ax.set_ylabel("Explained Variance Ratio")  # Label y-axis
+ax.set_title("Variance Distribution Across Principal Components")  # Title of the graph
+st.pyplot(fig)  # Display the plot in Streamlit
 
 ## Step 5: Visualize PCA Projection
 st.subheader("Step 5: Visualizing PCA Projection")
@@ -102,23 +107,27 @@ This scatter plot represents the dataset after transformation using PCA. Each po
 represented by its principal components instead of the original features.
 """)
 
+# Visualization logic depending on the number of components selected
 if num_components == 2:
-    # Standard 2D scatter plot for two principal components
+    # Generate a standard 2D scatter plot if two principal components are selected
     fig, ax = plt.subplots()
     ax.scatter(X_pca[:, 0], X_pca[:, 1], alpha=0.6, cmap="viridis")
-    ax.set_xlabel("Principal Component 1")
-    ax.set_ylabel("Principal Component 2")
-    ax.set_title("Data Projected onto Principal Components")
+    ax.set_xlabel("Principal Component 1")  # Label x-axis
+    ax.set_ylabel("Principal Component 2")  # Label y-axis
+    ax.set_title("Data Projected onto Principal Components")  # Graph title
     st.pyplot(fig)
 
 elif num_components > 2:
-    # Pairplot visualization if more than two principal components are selected
+    # Generate a pairplot for visualization if more than two components are selected
     st.write("""
     Since more than two principal components are selected, the pairplot below shows 
     relationships between different components.
     """)
-    
-    pca_df = pd.DataFrame(X_pca, columns=[f"PC{i+1}" for i in range(num_components)])    
+
+    # Convert PCA-transformed data into a DataFrame
+    pca_df = pd.DataFrame(X_pca, columns=[f"PC{i+1}" for i in range(num_components)])
+
+    # Create scatterplot matrix for dimensional analysis
     pairplot_fig = sns.pairplot(pca_df)
     st.pyplot(pairplot_fig.fig)
 
